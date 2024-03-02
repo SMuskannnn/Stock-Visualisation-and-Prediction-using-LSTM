@@ -181,7 +181,7 @@ if ticker:
         st.write(
             f"""
             <div style="padding: 10px; border-radius: 10px; background-color: #f0f0f0;">
-                <span style="font-size: 24px; color: {color};">{latest_price:.2f}{currency}</span>
+                <span style="font-size: 24px; color: {color};">{latest_price:.2f} {currency}</span>
                 <span style="font-size: 16px; color: {color};">({delta:+.2f})</span>
             </div>""",
             unsafe_allow_html=True)
