@@ -164,11 +164,11 @@ if ticker:
         st.header(ticker)
         # Get the latest price and open price
         latest_data = get_latest_stock_data(ticker)
-		try:
-		    latest_price = latest_data['Close'].iloc[-1]
-		except IndexError:
-		    st.warning("No data available for the selected ticker. Please enter a valid ticker.")
-		    st.stop()
+	try:
+		latest_price = latest_data['Close'].iloc[-1]
+	except IndexError:
+		st.warning("No data available for the selected ticker. Please enter a valid ticker.")
+		st.stop()
         open_price = latest_data['Open'].iloc[0]
         # Calculate the delta
         delta = latest_price - open_price
