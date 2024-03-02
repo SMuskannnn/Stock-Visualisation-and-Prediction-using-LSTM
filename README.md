@@ -13,12 +13,16 @@ This project is aimed at visualizing stock movement and predicting future stock 
 
 - **Prediction Tab:** Utilizes a Long Short-Term Memory (LSTM) neural network to predict future stock prices based on historical data. It includes training the model, validating the model, and displaying predicted vs. actual stock prices for both training and testing data.
 
+## Access the site on
+    ```bash
+    https://stock-visualisation-and-prediction-using-lstm-kfqyijysz3pmbnou.streamlit.app/
+    ```
 ## How to Use
 
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/your_username/stock-movement-prediction.git
+    https://github.com/SMuskannnn/Stock-Visualisation-and-Prediction-using-LSTM.git
     ```
 
 2. Install the required dependencies:
