@@ -148,10 +148,18 @@ def inverse_data(y_train, x_train, lookback):
 
 
 # Function to get the latest stock data
+# def get_latest_stock_data(ticker):
+#     stock = yf.Ticker(ticker)
+#     latest_data = stock.history(period='1d')
+#     return latest_data
+
 def get_latest_stock_data(ticker):
     stock = yf.Ticker(ticker)
     latest_data = stock.history(period='1d')
+    # Convert index to datetime and localize to UTC timezone
+    latest_data.index = pd.to_datetime(latest_data.index).tz_localize('UTC')
     return latest_data
+
 
 if ticker:
     stck = yf.download(ticker, start_date, end_date)
