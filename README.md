@@ -15,9 +15,9 @@ This project is aimed at visualizing stock movement and predicting future stock 
 
 ## Access the site on
 
-    ```bash
-    https://stock-visualisation-and-prediction-using-lstm-kfqyijysz3pmbnou.streamlit.app/
-    ```
+```bash
+https://stock-visualisation-and-prediction-using-lstm-kfqyijysz3pmbnou.streamlit.app/
+```
 ## How to Use
 
 1. Clone the repository to your local machine:
