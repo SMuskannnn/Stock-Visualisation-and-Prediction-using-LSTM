@@ -353,12 +353,23 @@ if ticker:
             matrix_data = shifted_df.to_numpy()
             #preprocessing(Normalisation)
             from sklearn.preprocessing import MinMaxScaler
+            if matrix_data.shape[0] == 0:  # Check if matrix_data is empty
+                st.warning("An error occurred. Please check your input start date and make sure that it is in the past.")
+                st.stop()
+            
             try:
-                scaler = MinMaxScaler(feature_range=(-1,1))
+                scaler = MinMaxScaler(feature_range=(-1, 1))
                 matrix_data = scaler.fit_transform(matrix_data)
             except ValueError:
-                st.warning("An error occured. Please check your input start date and Make sure that it is in past.")
+                st.warning("An error occurred while scaling the data.")
                 st.stop()
+
+            # try:
+            #     scaler = MinMaxScaler(feature_range=(-1,1))
+            #     matrix_data = scaler.fit_transform(matrix_data)
+            # except ValueError:
+            #     st.warning("An error occured. Please check your input start date and Make sure that it is in past.")
+            #     st.stop()
             # scaler = MinMaxScaler(feature_range=(-1,1))
             # matrix_data = scaler.fit_transform(matrix_data)
             #getting the required column alone for training
