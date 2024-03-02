@@ -161,10 +161,10 @@ if ticker:
     summary, dashboard = st.tabs(["Summary","Dashboard"])
     
     with summary:
-		st.header(ticker)
+	st.header(ticker)
         # Get the latest price and open price
-		latest_data = get_latest_stock_data(ticker)
-		latest_price = latest_data['Close'].iloc[-1]
+	latest_data = get_latest_stock_data(ticker)
+	latest_price = latest_data['Close'].iloc[-1]
 	# try:
 	#     latest_price = latest_data['Close'].iloc[-1]
 	# except IndexError:
