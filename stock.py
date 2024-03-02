@@ -8,13 +8,7 @@ import torch.nn as nn
 import plotly.graph_objs as go
 import plotly.io as pio
 
-st.title('Stock Movement Visualization and Prediction')
-start_date = st.date_input('Start Date', min_value=datetime.datetime(2000, 1, 1), max_value=datetime.datetime(2025, 1, 1))
-ticker = st.text_input('Ticker')
-end_date = st.date_input('End Date', min_value=datetime.datetime(2000, 1, 1), max_value=datetime.datetime(2025, 1, 1))
-
-
-#functions
+####  functions  ####
 
 def SMA(data, period, column = 'Close'):
     return data[column].rolling(window = period).mean()
@@ -153,12 +147,10 @@ def get_latest_stock_data(ticker):
     latest_data = stock.history(period='1d')
     return latest_data
 
-# def get_latest_stock_data(ticker):
-#     stock = yf.Ticker(ticker)
-#     latest_data = stock.history(period='1d')
-#     # Convert index to datetime and localize to UTC timezone
-#     latest_data.index = pd.to_datetime(latest_data.index).tz_localize('UTC')
-#     return latest_data
+st.title('Stock Movement Visualization and Prediction')
+start_date = st.date_input('Start Date', min_value=datetime.datetime(2000, 1, 1), max_value=datetime.datetime(2025, 1, 1))
+ticker = st.text_input('Ticker')
+end_date = st.date_input('End Date', min_value=datetime.datetime(2000, 1, 1), max_value=datetime.datetime(2025, 1, 1))
 
 
 if ticker:
@@ -171,7 +163,12 @@ if ticker:
         st.header(ticker)
         # Get the latest price and open price
         latest_data = get_latest_stock_data(ticker)
-        latest_price = latest_data['Close'].iloc[-1]
+        try:
+            latest_price = latest_data['Close'].iloc[-1]
+        except IndexError:
+            st.warning("No data available for the selected ticker. Please enter a valid ticker.")
+            st.stop()
+        #latest_price = latest_data['Close'].iloc[-1]
         open_price = latest_data['Open'].iloc[0]
         # Calculate the delta
         delta = latest_price - open_price
@@ -356,8 +353,14 @@ if ticker:
             matrix_data = shifted_df.to_numpy()
             #preprocessing(Normalisation)
             from sklearn.preprocessing import MinMaxScaler
-            scaler = MinMaxScaler(feature_range=(-1,1))
-            matrix_data = scaler.fit_transform(matrix_data)
+            try:
+                scaler = MinMaxScaler(feature_range=(-1,1))
+                matrix_data = scaler.fit_transform(matrix_data)
+            except ValueError:
+                st.warning("An error occured. Please check your input start date and Make sure that it is in past.")
+                st.stop()
+            # scaler = MinMaxScaler(feature_range=(-1,1))
+            # matrix_data = scaler.fit_transform(matrix_data)
             #getting the required column alone for training
             x = matrix_data[:,1:]
             y = matrix_data[:,0]
@@ -441,7 +444,6 @@ if ticker:
 
 else:
     pass
-
 
 
 
