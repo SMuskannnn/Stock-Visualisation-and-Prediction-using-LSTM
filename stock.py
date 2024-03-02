@@ -1,14 +1,10 @@
-#installing required modules
-pip install numpy pandas yfinance torch streamlit plotly scikit-learn
-
-
+import streamlit as st
 import numpy as np
 import pandas as pd
 import yfinance as yf
 import datetime
 import torch
 import torch.nn as nn
-import streamlit as st
 import plotly.graph_objs as go
 import plotly.io as pio
 
