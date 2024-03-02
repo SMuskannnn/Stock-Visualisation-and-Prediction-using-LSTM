@@ -172,6 +172,8 @@ if ticker:
         open_price = latest_data['Open'].iloc[0]
         # Calculate the delta
         delta = latest_price - open_price
+        #currency
+        currency = ticker.info.get("currency")
         # Define color based on delta
         color = "green" if delta >= 0 else "red"
 
@@ -179,7 +181,7 @@ if ticker:
         st.write(
             f"""
             <div style="padding: 10px; border-radius: 10px; background-color: #f0f0f0;">
-                <span style="font-size: 24px; color: {color};">${latest_price:.2f}</span>
+                <span style="font-size: 24px; color: {color};">{latest_price:.2f}{currency}</span>
                 <span style="font-size: 16px; color: {color};">({delta:+.2f})</span>
             </div>""",
             unsafe_allow_html=True)
