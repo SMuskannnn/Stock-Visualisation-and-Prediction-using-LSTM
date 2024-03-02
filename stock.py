@@ -173,7 +173,7 @@ if ticker:
         # Calculate the delta
         delta = latest_price - open_price
         #currency
-        currency = ticker.info.get("currency")
+        currency = tick.info.get("currency")
         # Define color based on delta
         color = "green" if delta >= 0 else "red"
 
