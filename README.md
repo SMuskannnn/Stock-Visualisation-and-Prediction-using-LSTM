@@ -14,6 +14,7 @@ This project is aimed at visualizing stock movement and predicting future stock 
 - **Prediction Tab:** Utilizes a Long Short-Term Memory (LSTM) neural network to predict future stock prices based on historical data. It includes training the model, validating the model, and displaying predicted vs. actual stock prices for both training and testing data.
 
 ## Access the site on
+
     ```bash
     https://stock-visualisation-and-prediction-using-lstm-kfqyijysz3pmbnou.streamlit.app/
     ```
